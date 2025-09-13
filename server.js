@@ -188,19 +188,6 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Serve static files in production
-if (process.env.NODE_ENV === 'production') {
-  import('path').then(path => {
-    const __dirname = path.dirname(new URL(import.meta.url).pathname);
-    app.use(express.static(path.join(__dirname, 'dist')));
-    
-    // Handle SPA routing
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-    });
-  });
-}
-
 // 404 handler
 app.use((req, res) => {
   res.status(404).json({
