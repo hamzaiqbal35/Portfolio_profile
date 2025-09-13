@@ -1,73 +1,104 @@
-# Welcome to your Lovable project
+# Portfolio Profile
 
-## Project info
+A modern, responsive portfolio website built with React, TypeScript, and Vite. This portfolio showcases my projects, skills, and experience as a full-stack developer.
 
-**URL**: https://lovable.dev/projects/64d85bc4-9808-40fe-8fa0-1998ba98785f
+## Features
 
-## How can I edit this code?
+- **Modern UI/UX** with smooth animations and transitions
+- **Fully Responsive** design that works on all devices
+- **Project Showcase** with detailed descriptions and technologies used
+- **Contact Form** with email integration
+- **Interactive Elements** for better user engagement
 
-There are several ways of editing your application.
+## Technologies Used
 
-**Use Lovable**
+- **Frontend**: 
+  - React 18 with TypeScript
+  - Vite for fast development and building
+  - Tailwind CSS for styling
+  - Shadcn/ui components
+  - Framer Motion for animations
+  - React Router for navigation
+  - React Query for data fetching
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/64d85bc4-9808-40fe-8fa0-1998ba98785f) and start prompting.
+- **Backend**:
+  - Node.js with Express
+  - Nodemailer for email functionality
 
-Changes made via Lovable will be committed automatically to this repo.
+## Getting Started
 
-**Use your preferred IDE**
+### Prerequisites
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- Node.js (v16 or higher)
+- npm or yarn
+- Git
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Installation
 
-Follow these steps:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/hamzaiqbal35/Portfolio_profile.git
+   cd Portfolio_profile
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+3. Create a `.env` file in the root directory and add your environment variables:
+   ```env
+   VITE_EMAIL_SERVICE=your_email_service
+   VITE_EMAIL_USERNAME=your_email@example.com
+   VITE_EMAIL_PASSWORD=your_email_password
+   VITE_EMAIL_TO=recipient@example.com
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+4. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+5. For production build:
+   ```bash
+   npm run build
+   npm run preview
+   ```
+
+## Project Structure
+
+```
+src/
+├── assets/            # Images and static files
+├── components/        # Reusable components
+│   ├── Portfolio/     # Portfolio specific components
+│   └── ui/            # UI components
+├── hooks/             # Custom React hooks
+├── lib/               # Utility functions
+├── pages/             # Page components
+└── App.tsx            # Main application component
 ```
 
-**Edit a file directly in GitHub**
+## License
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-**Use GitHub Codespaces**
+## Acknowledgments
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- [Shadcn/ui](https://ui.shadcn.com/) for the beautiful components
+- [Vite](https://vitejs.dev/) for the amazing development experience
+- [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS framework
 
-## What technologies are used for this project?
+## Contact
 
-This project is built with:
+- GitHub: [@hamzaiqbal35](https://github.com/hamzaiqbal35)
+- Email: hamzaiqbalrajpoot35@gmail.com
+- LinkedIn: https://www.linkedin.com/in/hamza-iqbal-rajpoot-9a6624267/
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/64d85bc4-9808-40fe-8fa0-1998ba98785f) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Built by Hamza Iqbal
