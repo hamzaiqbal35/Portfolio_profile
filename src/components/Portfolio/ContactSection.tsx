@@ -24,28 +24,77 @@ const ContactSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
+    
     setIsSubmitting(true);
-
-    // Simulate form submission (since we don't have a backend endpoint)
-    try {
-      // In a real application, you would send this data to your backend
-      await new Promise(resolve => setTimeout(resolve, 1000));
+    const maxRetries = 3;
+    let attempt = 0;
+    let success = false;
+    let lastError: Error | null = null;
+    
+    while (attempt < maxRetries && !success) {
+      attempt++;
       
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+        
+        const response = await fetch(`/api/send-email`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            message: `Subject: ${formData.subject}\n\n${formData.message}`
+          }),
+          signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (data.success) {
+          success = true;
+          toast({
+            title: "Success!",
+            description: "Your message has been sent successfully.",
+          });
+          setFormData({
+            name: "",
+            email: "",
+            subject: "",
+            message: ""
+          });
+        } else {
+          throw new Error(data.error || 'Failed to send message');
+        }
+      } catch (error) {
+        console.error(`Attempt ${attempt} failed:`, error);
+        lastError = error as Error;
+        
+        if (attempt < maxRetries) {
+          const delay = 1000 * Math.pow(2, attempt - 1); // Exponential backoff
+          console.log(`Retrying in ${delay}ms...`);
+          await new Promise(resolve => setTimeout(resolve, delay));
+        }
+      }
+    }
+    
+    setIsSubmitting(false);
+    
+    if (!success && lastError) {
       toast({
-        title: "Message sent successfully!",
-        description: "Thank you for your message. I'll get back to you soon.",
-      });
-      
-      // Reset form
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    } catch (error) {
-      toast({
-        title: "Error sending message",
-        description: "Something went wrong. Please try again or contact me directly.",
         variant: "destructive",
+        title: "Error",
+        description: lastError.message || "Failed to send message. Please try again later.",
       });
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -113,9 +162,15 @@ const ContactSection = () => {
                         {info.href ? (
                           <a 
                             href={info.href}
-                            target="_blank"
+                            target={info.href.startsWith('http') ? "_blank" : "_self"}
                             rel="noopener noreferrer"
                             className="text-foreground hover:text-primary transition-colors font-medium"
+                            onClick={(e) => {
+                              if (info.href?.startsWith('mailto:')) {
+                                e.stopPropagation();
+                                window.location.href = info.href;
+                              }
+                            }}
                           >
                             {info.value}
                           </a>
@@ -147,6 +202,7 @@ const ContactSection = () => {
                       id="name"
                       name="name"
                       type="text"
+                      autoComplete="name"
                       placeholder="Your full name"
                       value={formData.name}
                       onChange={handleInputChange}
@@ -160,6 +216,7 @@ const ContactSection = () => {
                       id="email"
                       name="email"
                       type="email"
+                      autoComplete="email"
                       placeholder="your.email@example.com"
                       value={formData.email}
                       onChange={handleInputChange}
@@ -175,6 +232,7 @@ const ContactSection = () => {
                     id="subject"
                     name="subject"
                     type="text"
+                    autoComplete="off"
                     placeholder="What's this about?"
                     value={formData.subject}
                     onChange={handleInputChange}
@@ -188,6 +246,7 @@ const ContactSection = () => {
                   <Textarea
                     id="message"
                     name="message"
+                    autoComplete="off"
                     placeholder="Tell me about your project or just say hello..."
                     value={formData.message}
                     onChange={handleInputChange}

@@ -17,9 +17,6 @@ const Footer = () => {
             <p className="text-muted-foreground">
               © {currentYear} Hamza Iqbal. All rights reserved.
             </p>
-            <p className="text-sm text-muted-foreground flex items-center justify-center md:justify-start gap-1 mt-1">
-              Made with <Heart className="h-4 w-4 text-red-500 animate-pulse" /> using React & Tailwind CSS
-            </p>
           </div>
 
           {/* Social Links */}
@@ -73,8 +70,6 @@ const Footer = () => {
         {/* Additional Info */}
         <div className="mt-8 pt-8 border-t border-border/50 text-center">
           <p className="text-sm text-muted-foreground">
-            This portfolio is built with modern web technologies including React, TypeScript, Tailwind CSS, and Vite.
-            <br />
             Open to new opportunities and interesting projects. Let's build something amazing together!
           </p>
         </div>

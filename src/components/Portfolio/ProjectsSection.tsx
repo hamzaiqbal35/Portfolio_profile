@@ -2,8 +2,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github } from "lucide-react";
-import dmsProject from "@/assets/dms-project.jpg";
-import complaintProject from "@/assets/complaint-system-project.jpg";
+import dmsProject from "@/assets/DMS.png";
+import complaintProject from "@/assets/CSRTS.png";
 
 const ProjectsSection = () => {
   const projects = [
@@ -11,7 +11,7 @@ const ProjectsSection = () => {
       title: "Distribution Management System (DMS)",
       description: "Full-stack PHP/MySQL system for Allied Steel Works featuring comprehensive admin & customer portals with advanced purchase management, sales tracking, detailed reporting, and real-time analytics dashboard.",
       image: dmsProject,
-      technologies: ["PHP", "Laravel", "MySQL", "JavaScript", "Bootstrap", "Chart.js"],
+      technologies: ["PHP", "MySQL", "JavaScript", "Bootstrap", "Chart.js"],
       githubUrl: "https://github.com/hamzaiqbal35/DMS.git",
       features: ["Admin Dashboard", "Customer Portal", "Sales Management", "Analytics", "Reporting"]
     },
@@ -19,7 +19,7 @@ const ProjectsSection = () => {
       title: "Complaint Service Request Tracking System",
       description: "Sophisticated role-based web application designed to efficiently track, manage, and resolve customer complaints with automated workflows, status updates, and comprehensive reporting capabilities.",
       image: complaintProject,
-      technologies: ["PHP", "MySQL", "JavaScript", "CSS3", "AJAX", "JSON"],
+      technologies: ["PHP", "Laravel", "MySQL", "JavaScript", "CSS3", "AJAX", "JSON"],
       githubUrl: "https://github.com/hamzaiqbal35/Complaint_Service_Request_Tracking_System.git",
       features: ["Role Management", "Ticket Tracking", "Status Updates", "Email Notifications", "Reports"]
     }

@@ -4,8 +4,8 @@ import profilePicture from "@/assets/profile-picture.jpg";
 
 const AboutSection = () => {
   const stats = [
-    { icon: Code, label: "Years Experience", value: "3+" },
-    { icon: Coffee, label: "Projects Completed", value: "15+" },
+    { icon: Code, label: "Years Experience", value: "2+" },
+    { icon: Coffee, label: "Projects Completed", value: "10+" },
     { icon: GraduationCap, label: "Degree", value: "BSIT" },
     { icon: MapPin, label: "Location", value: "Lahore, PK" }
   ];
