@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Home, User, Code, Briefcase, Mail } from "lucide-react";
+import { Menu, X, Home, User, Code, Briefcase, Mail, Download } from "lucide-react";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +13,46 @@ const Navigation = () => {
     { id: "projects", label: "Projects", icon: Briefcase },
     { id: "contact", label: "Contact", icon: Mail }
   ];
+
+  // Function to handle resume download
+  const handleDownloadResume = () => {
+    try {
+      const resumeUrl = `${window.location.origin}/Hamza_Iqbal_Resume.pdf`;
+      const fileName = 'Hamza_Iqbal_Resume.pdf';
+      
+      fetch(resumeUrl)
+        .then(response => response.blob())
+        .then(blob => {
+          // Create blob link to download
+          const url = window.URL.createObjectURL(new Blob([blob]));
+          const link = document.createElement('a');
+          link.href = url;
+          link.setAttribute('download', fileName);
+          
+          // Append to html link element page
+          document.body.appendChild(link);
+          
+          // Start download
+          link.click();
+          
+          // Clean up and remove the link
+          link.parentNode?.removeChild(link);
+          window.URL.revokeObjectURL(url);
+        })
+        .catch(() => {
+          // Fallback to direct download
+          const link = document.createElement('a');
+          link.href = resumeUrl;
+          link.download = fileName;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+    } catch (error) {
+      console.error('Error downloading resume:', error);
+      window.open('/Hamza_Iqbal_Resume.pdf', '_blank');
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,73 +86,81 @@ const Navigation = () => {
   };
 
   return (
-    <>
-      {/* Desktop Navigation */}
-      <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 hidden md:block">
-        <div className="glass-effect rounded-full px-6 py-3 shadow-glow">
-          <div className="flex space-x-1">
+    <nav className="fixed w-full bg-background/80 backdrop-blur-sm z-50 shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          <div className="flex items-center">
+            <a href="#hero" className="text-xl font-bold text-primary">
+              Hamza Iqbal
+            </a>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
-              <Button
+              <a
                 key={item.id}
-                variant={activeSection === item.id ? "default" : "ghost"}
-                size="sm"
-                onClick={() => scrollToSection(item.id)}
-                className={`rounded-full transition-all duration-300 ${
-                  activeSection === item.id
-                    ? "bg-primary text-primary-foreground shadow-hover"
-                    : "text-muted-foreground hover:text-primary"
-                }`}
+                href={`#${item.id}`}
+                className={`px-3 py-2 rounded-md text-sm font-medium flex items-center ${activeSection === item.id ? 'text-primary' : 'text-foreground/70 hover:text-foreground'}`}
               >
-                <item.icon className="h-4 w-4 mr-2" />
+                <item.icon className="h-4 w-4 mr-1" />
                 {item.label}
-              </Button>
+              </a>
             ))}
+            <Button 
+              onClick={handleDownloadResume}
+              variant="outline" 
+              size="sm"
+              className="ml-2 flex items-center gap-1"
+            >
+              <Download className="h-4 w-4" />
+              Resume
+            </Button>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden flex items-center">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
           </div>
         </div>
-      </nav>
-
-      {/* Mobile Navigation */}
-      <div className="md:hidden">
-        {/* Mobile Menu Button */}
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => setIsOpen(!isOpen)}
-          className="fixed top-6 right-6 z-50 glass-effect border-primary"
-        >
-          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </Button>
-
-        {/* Mobile Menu Overlay */}
-        {isOpen && (
-          <>
-            <div 
-              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40"
-              onClick={() => setIsOpen(false)}
-            />
-            <div className="fixed top-20 right-6 z-50 glass-effect rounded-xl p-4 shadow-glow">
-              <div className="flex flex-col space-y-2">
-                {navItems.map((item) => (
-                  <Button
-                    key={item.id}
-                    variant={activeSection === item.id ? "default" : "ghost"}
-                    onClick={() => scrollToSection(item.id)}
-                    className={`justify-start rounded-lg transition-all duration-300 ${
-                      activeSection === item.id
-                        ? "bg-primary text-primary-foreground"
-                        : "text-muted-foreground hover:text-primary"
-                    }`}
-                  >
-                    <item.icon className="h-4 w-4 mr-3" />
-                    {item.label}
-                  </Button>
-                ))}
-              </div>
-            </div>
-          </>
-        )}
       </div>
-    </>
+
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="md:hidden bg-background border-t">
+          <div className="px-2 pt-2 pb-3 space-y-1">
+            {navItems.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className="flex items-center px-3 py-2 text-base font-medium text-foreground/70 hover:bg-muted rounded-md"
+                onClick={() => setIsOpen(false)}
+              >
+                <item.icon className="h-5 w-5 mr-3" />
+                {item.label}
+              </a>
+            ))}
+            <button
+              onClick={() => {
+                handleDownloadResume();
+                setIsOpen(false);
+              }}
+              className="w-full flex items-center px-3 py-2 text-base font-medium text-foreground/70 hover:bg-muted rounded-md"
+            >
+              <Download className="h-5 w-5 mr-3" />
+              Download Resume
+            </button>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 };
 
