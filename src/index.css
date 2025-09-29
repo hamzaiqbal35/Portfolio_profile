@@ -26,7 +26,7 @@ All colors MUST be HSL for proper theming.
 
     /* Secondary emerald accents */
     --secondary: 158 64% 52%;
-    --secondary-foreground: 222 84% 5%;
+    --secondary-foreground: 0 0% 100%;
 
     /* Muted and subtle colors */
     --muted: 217 33% 17%;
