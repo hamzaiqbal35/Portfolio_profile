@@ -4,8 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  NPM_FLAGS = "--legacy-peer-deps"
-  NPM_FLAGS = "--force"
+  NPM_FLAGS = "--legacy-peer-deps --force"
 
 [dev]
   command = "npm run dev"
