@@ -4,9 +4,18 @@ import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github } from "lucide-react";
 import dmsProject from "@/assets/DMS.png";
 import complaintProject from "@/assets/CSRTS.png";
+import fluxmartProject from "@/assets/MVEP.png";
 
 const ProjectsSection = () => {
   const projects = [
+    {
+      title: "Fluxmart",
+      description: "A multi-vendor ecommerce platform that enables vendors to manage products and orders while customers shop seamlessly across a unified marketplace, powered by a modern React and Node.js architecture.",
+      image: fluxmartProject,
+      technologies: ["MongoDB", "Express.js", "React", "Vite", "Node.js", "Tailwind CSS"],
+      githubUrl: "https://github.com/hamzaiqbal35/ApexcifyTechnologys_Multi-Vendor-eCommerce-Platform.git",
+      features: ["Multi-Vendor Marketplace", "User Authentication", "Product Management", "Shopping Cart", "Order Processing"]
+    },
     {
       title: "Distribution Management System (DMS)",
       description: "Full-stack PHP/MySQL system for Allied Steel Works featuring comprehensive admin & customer portals with advanced purchase management, sales tracking, detailed reporting, and real-time analytics dashboard.",
