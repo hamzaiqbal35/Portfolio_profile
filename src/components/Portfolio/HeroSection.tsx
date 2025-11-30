@@ -54,7 +54,7 @@ const HeroSection = () => {
                 className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                 asChild
               >
-                <a href="https://www.linkedin.com/in/hamza-iqbal-rajpoot-9a6624267/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/hamza-iqbal-9a6624267/" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="h-5 w-5" />
                 </a>
               </Button>

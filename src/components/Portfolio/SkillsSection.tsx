@@ -8,7 +8,7 @@ const SkillsSection = () => {
       title: "Front-End Development",
       icon: Code,
       color: "text-primary",
-      skills: ["React", "JavaScript (ES6+)", "Tailwind CSS", "HTML5", "CSS3", "Responsive Design"]
+      skills: ["React", "JavaScript", "Tailwind CSS", "HTML", "CSS", "Responsive Design"]
     },
     {
       title: "Back-End Development", 
@@ -20,13 +20,13 @@ const SkillsSection = () => {
       title: "Database Management",
       icon: Database,
       color: "text-accent",
-      skills: ["MySQL", "Oracle XE", "MongoDB", "Database Design", "Query Optimization", "Data Modeling"]
+      skills: ["MySQL", "Oracle XE", "MongoDB", "Database Design"]
     },
     {
       title: "Tools & Technologies",
       icon: Wrench,
       color: "text-primary-glow",
-      skills: ["Git/GitHub", "Vite", "XAMPP", "VS Code", "Linux", "Docker"]
+      skills: ["Git/GitHub", "Vite", "XAMPP", "VS Code", "Linux"]
     }
   ];
 

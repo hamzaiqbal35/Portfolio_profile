@@ -5,9 +5,18 @@ import { ExternalLink, Github } from "lucide-react";
 import dmsProject from "@/assets/DMS.png";
 import complaintProject from "@/assets/CSRTS.png";
 import fluxmartProject from "@/assets/MVEP.png";
+import echoSocialProject from "@/assets/Echo.png";
 
 const ProjectsSection = () => {
   const projects = [
+    {
+      title: "EchoSocial",
+      description: "A modern, lightweight social platform built with the MERN stack. It lets users share posts, photos, and videos, follow each other, and engage through likes and comments in a clean, responsive interface.",
+      image: echoSocialProject,
+      technologies: ["MongoDB", "Express.js", "React", "Vite", "Node.js", "Tailwind CSS"],
+      githubUrl: "https://github.com/hamzaiqbal35/ApexcifyTechnologys_Social-Media-Platform.git",
+      features: ["User Authentication", "Post Creation & Sharing", "Like & Comment System", "Follow & Unfollow", "User Profiles", "Admin Dashboard"]
+    },
     {
       title: "Fluxmart",
       description: "A multi-vendor ecommerce platform that enables vendors to manage products and orders while customers shop seamlessly across a unified marketplace, powered by a modern React and Node.js architecture.",
