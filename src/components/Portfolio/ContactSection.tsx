@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, MapPin, Phone, Github, Linkedin, Send } from "lucide-react";
+import emailjs from '@emailjs/browser';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -25,76 +26,45 @@ const ContactSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isSubmitting) return;
-    
+
     setIsSubmitting(true);
-    const maxRetries = 3;
-    let attempt = 0;
-    let success = false;
-    let lastError: Error | null = null;
-    
-    while (attempt < maxRetries && !success) {
-      attempt++;
-      
-      try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
-        
-        const response = await fetch(`/api/send-email`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            message: `Subject: ${formData.subject}\n\n${formData.message}`
-          }),
-          signal: controller.signal
-        });
-        
-        clearTimeout(timeoutId);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        
-        if (data.success) {
-          success = true;
-          toast({
-            title: "Success!",
-            description: "Your message has been sent successfully.",
-          });
-          setFormData({
-            name: "",
-            email: "",
-            subject: "",
-            message: ""
-          });
-        } else {
-          throw new Error(data.error || 'Failed to send message');
-        }
-      } catch (error) {
-        console.error(`Attempt ${attempt} failed:`, error);
-        lastError = error as Error;
-        
-        if (attempt < maxRetries) {
-          const delay = 1000 * Math.pow(2, attempt - 1); // Exponential backoff
-          console.log(`Retrying in ${delay}ms...`);
-          await new Promise(resolve => setTimeout(resolve, delay));
-        }
-      }
-    }
-    
-    setIsSubmitting(false);
-    
-    if (!success && lastError) {
+
+    try {
+      // REPLACE THESE WITH YOUR ACTUAL EMAILJS CREDENTIALS
+      const serviceID = 'service_lcqr48b';
+      const templateID = 'template_1gvftkq';
+      const publicKey = '03oq3Vg0_d8vGT2tP';
+
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        time: new Date().toLocaleString()
+      };
+
+      await emailjs.send(serviceID, templateID, templateParams, publicKey);
+
+      toast({
+        title: "Success!",
+        description: "Your message has been sent successfully.",
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error('Failed to send email:', error);
       toast({
         variant: "destructive",
         title: "Error",
-        description: lastError.message || "Failed to send message. Please try again later.",
+        description: "Failed to send message. Please try again later.",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -143,8 +113,8 @@ const ContactSection = () => {
             <div>
               <h3 className="text-2xl font-semibold mb-6">Let's Connect</h3>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                I'm always excited to work on new projects and collaborate with creative minds. 
-                Whether you have a project in mind, need technical consultation, or just want to 
+                I'm always excited to work on new projects and collaborate with creative minds.
+                Whether you have a project in mind, need technical consultation, or just want to
                 connect, feel free to reach out!
               </p>
             </div>
@@ -160,7 +130,7 @@ const ContactSection = () => {
                       <div className="flex-1">
                         <p className="text-sm text-muted-foreground">{info.label}</p>
                         {info.href ? (
-                          <a 
+                          <a
                             href={info.href}
                             target={info.href.startsWith('http') ? "_blank" : "_self"}
                             rel="noopener noreferrer"
@@ -225,7 +195,7 @@ const ContactSection = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="subject">Subject *</Label>
                   <Input
@@ -240,7 +210,7 @@ const ContactSection = () => {
                     className="border-muted focus:border-primary transition-colors"
                   />
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="message">Message *</Label>
                   <Textarea
@@ -255,9 +225,9 @@ const ContactSection = () => {
                     className="border-muted focus:border-primary transition-colors resize-none"
                   />
                 </div>
-                
-                <Button 
-                  type="submit" 
+
+                <Button
+                  type="submit"
                   disabled={isSubmitting}
                   className="w-full bg-primary hover:bg-primary-glow transition-all duration-300 disabled:opacity-50"
                 >
