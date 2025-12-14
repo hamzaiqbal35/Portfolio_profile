@@ -6,9 +6,25 @@ import dmsProject from "@/assets/DMS.png";
 import complaintProject from "@/assets/CSRTS.png";
 import fluxmartProject from "@/assets/MVEP.png";
 import echoSocialProject from "@/assets/Echo.png";
+import fitTrackProject from "@/assets/Fittrack(p).png";
 
 const ProjectsSection = () => {
   const projects = [
+    {
+      title: "FitTrack",
+      description: "A comprehensive fitness platform designed to modernize gym operations. It connects Admins, Trainers, and Members through role-based dashboards to manage memberships, classes, and progress in a clean, responsive interface.",
+      image: fitTrackProject,
+      technologies: ["React.js", "Vite", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
+      githubUrl: "https://github.com/hamzaiqbal35/ApexcifyTechnologys_Fitness-Center-Management-System.git",
+      features: [
+        "Role-Based Dashboards",
+        "Membership Management",
+        "Class Booking",
+        "Progress Tracking",
+        "Trainer Assignment",
+        "Analytics & Reports"
+      ]
+    },
     {
       title: "EchoSocial",
       description: "A modern, lightweight social platform built with the MERN stack. It lets users share posts, photos, and videos, follow each other, and engage through likes and comments in a clean, responsive interface.",
@@ -57,15 +73,15 @@ const ProjectsSection = () => {
 
         <div className="grid lg:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <Card 
+            <Card
               key={index}
               className="glass-effect hover:shadow-hover transition-all duration-300 animate-fade-in group overflow-hidden"
               style={{ animationDelay: `${index * 0.3}s` }}
             >
               {/* Project Image */}
               <div className="relative overflow-hidden">
-                <img 
-                  src={project.image} 
+                <img
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
@@ -87,7 +103,7 @@ const ProjectsSection = () => {
                   <h4 className="text-sm font-semibold mb-2 text-foreground">Technologies Used:</h4>
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, techIndex) => (
-                      <Badge 
+                      <Badge
                         key={techIndex}
                         variant="secondary"
                         className="bg-muted text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-200"
@@ -103,7 +119,7 @@ const ProjectsSection = () => {
                   <h4 className="text-sm font-semibold mb-2 text-foreground">Key Features:</h4>
                   <div className="flex flex-wrap gap-2">
                     {project.features.map((feature, featureIndex) => (
-                      <Badge 
+                      <Badge
                         key={featureIndex}
                         variant="outline"
                         className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground transition-all duration-200 text-xs"
@@ -116,7 +132,7 @@ const ProjectsSection = () => {
 
                 {/* Action Buttons */}
                 <div className="flex gap-3 pt-2">
-                  <Button 
+                  <Button
                     asChild
                     className="flex-1 bg-primary hover:bg-primary-glow transition-all duration-300"
                   >
@@ -136,7 +152,7 @@ const ProjectsSection = () => {
           <p className="text-muted-foreground mb-6">
             Want to see more of my work? Check out my GitHub profile for additional projects and contributions.
           </p>
-          <Button 
+          <Button
             variant="outline"
             size="lg"
             className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"

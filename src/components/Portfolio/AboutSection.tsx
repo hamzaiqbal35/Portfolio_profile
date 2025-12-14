@@ -18,46 +18,48 @@ const AboutSection = () => {
             About <span className="gradient-text">Me</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Passionate about creating digital solutions that make a difference
+            Hamza Iqbal – Full-Stack Developer
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-12 items-center">
+        <div className="grid lg:grid-cols-3 gap-12 items-start">
           {/* Profile Picture */}
-          <div className="lg:col-span-1 flex justify-center animate-slide-in-left">
-            <div className="relative">
-              <div className="w-80 h-80 rounded-full overflow-hidden shadow-glow border-4 border-primary/20 hover:border-primary/40 transition-all duration-300">
-                <img 
-                  src={profilePicture} 
+          <div className="lg:col-span-1 flex justify-center animate-slide-in-left lg:sticky lg:top-24">
+            <div className="relative group">
+              <div className="w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl border-4 border-primary/20 group-hover:border-primary/50 transition-all duration-500 ease-out">
+                <img
+                  src={profilePicture}
                   alt="Hamza Iqbal - Full Stack Developer"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
                 />
               </div>
-              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center shadow-glow">
-                <Code className="h-8 w-8 text-primary-foreground" />
+              <div className="absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4 w-14 h-14 md:w-16 md:h-16 bg-primary rounded-full flex items-center justify-center shadow-lg animate-bounce-slow z-10">
+                <Code className="h-7 w-7 md:h-8 md:w-8 text-primary-foreground" />
               </div>
+              {/* Decorative circle */}
+              <div className="absolute inset-0 rounded-full border border-primary/10 scale-110 animate-pulse-slow -z-10"></div>
             </div>
           </div>
 
           {/* Content */}
-          <div className="lg:col-span-2 space-y-6 animate-slide-in-right">
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              I'm a <strong className="text-primary">BSIT graduate</strong> from Lahore, Pakistan, 
-              with a passion for full-stack web development. I specialize in creating clean, 
-              scalable web applications using modern technologies like React, Laravel, and Node.js.
-            </p>
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              My expertise spans across <strong className="text-secondary">front-end development</strong> with 
-              React and Tailwind CSS, and <strong className="text-secondary">back-end development</strong> with 
-              PHP/Laravel and Node.js. I have extensive experience with databases including MySQL, 
-              Oracle XE, and MongoDB.
-            </p>
-            <p className="text-lg leading-relaxed text-muted-foreground">
-              I believe in writing clean, maintainable code and focus heavily on 
-              <strong className="text-accent"> performance optimization</strong> and 
-              <strong className="text-accent"> security best practices</strong>. 
-              When I'm not coding, you'll find me exploring new technologies or contributing to open-source projects.
-            </p>
+          <div className="lg:col-span-2 space-y-8 animate-slide-in-right">
+            <div className="bg-card/50 backdrop-blur-sm p-6 rounded-2xl border border-border/50 shadow-sm hover:shadow-md transition-all duration-300">
+              <p className="text-lg leading-relaxed text-muted-foreground">
+                I am a <strong className="text-foreground font-semibold">Full-Stack Web Developer</strong> from Lahore, Pakistan, with experience building scalable, maintainable, and high-performance web applications using technologies like <span className="text-primary font-medium">React</span>, <span className="text-primary font-medium">Laravel</span>, and <span className="text-primary font-medium">Node.js</span>.
+              </p>
+            </div>
+
+            <div className="bg-card/50 backdrop-blur-sm p-6 rounded-2xl border border-border/50 shadow-sm hover:shadow-md transition-all duration-300">
+              <p className="text-lg leading-relaxed text-muted-foreground">
+                I work across both <span className="text-secondary font-medium">front-end</span> and <span className="text-secondary font-medium">back-end development</span>, designing applications that are functional, secure, and efficient. My experience includes working with databases such as <span className="text-accent font-medium">MySQL</span> and <span className="text-accent font-medium">MongoDB</span>, and I prioritize writing clean, well-structured code that follows best practices in performance and security.
+              </p>
+            </div>
+
+            <div className="bg-card/50 backdrop-blur-sm p-6 rounded-2xl border border-border/50 shadow-sm hover:shadow-md transition-all duration-300">
+              <p className="text-lg leading-relaxed text-muted-foreground">
+                I enjoy solving complex problems, contributing to open-source projects, and continuously improving my skills to stay current with modern web development trends. Outside of coding, I explore new tools and frameworks to refine my craft and deliver reliable software solutions.
+              </p>
+            </div>
 
             {/* Stats Cards */}
             <div className="grid grid-cols-2 gap-4 mt-8">
