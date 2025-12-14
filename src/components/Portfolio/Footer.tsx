@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Heart, Github, Linkedin, Mail, ArrowUp } from "lucide-react";
 
 const Footer = () => {
@@ -21,16 +21,13 @@ const Footer = () => {
 
           {/* Social Links */}
           <div className="flex justify-center space-x-4">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              asChild
+            <button
+              onClick={() => window.location.href = "mailto:hamzaiqbalrajpoot35@gmail.com"}
+              className={buttonVariants({ variant: "ghost", size: "sm", className: "text-muted-foreground hover:text-primary transition-colors" })}
+              type="button"
             >
-              <a href="mailto:hamzaiqbalrajpoot35@gmail.com">
-                <Mail className="h-5 w-5" />
-              </a>
-            </Button>
+              <Mail className="h-5 w-5" />
+            </button>
             <Button
               variant="ghost"
               size="sm"
@@ -47,7 +44,7 @@ const Footer = () => {
               className="text-muted-foreground hover:text-primary transition-colors"
               asChild
             >
-              <a href="https://www.linkedin.com/in/hamza-iqbal-rajpoot-9a6624267/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/hamza-iqbal-9a6624267/" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-5 w-5" />
               </a>
             </Button>

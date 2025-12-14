@@ -91,7 +91,7 @@ const ContactSection = () => {
       icon: Linkedin,
       label: "LinkedIn",
       value: "Hamza Iqbal",
-      href: "https://www.linkedin.com/in/hamza-iqbal-rajpoot-9a6624267/"
+      href: "https://www.linkedin.com/in/hamza-iqbal-9a6624267/"
     }
   ];
 
@@ -130,20 +130,24 @@ const ContactSection = () => {
                       <div className="flex-1">
                         <p className="text-sm text-muted-foreground">{info.label}</p>
                         {info.href ? (
-                          <a
-                            href={info.href}
-                            target={info.href.startsWith('http') ? "_blank" : "_self"}
-                            rel="noopener noreferrer"
-                            className="text-foreground hover:text-primary transition-colors font-medium"
-                            onClick={(e) => {
-                              if (info.href?.startsWith('mailto:')) {
-                                e.stopPropagation();
-                                window.location.href = info.href;
-                              }
-                            }}
-                          >
-                            {info.value}
-                          </a>
+                          info.href.startsWith('mailto:') ? (
+                            <button
+                              onClick={() => window.location.href = info.href}
+                              className="text-foreground hover:text-primary transition-colors font-medium cursor-pointer bg-transparent border-none p-0 h-auto font-inherit text-left"
+                              type="button"
+                            >
+                              {info.value}
+                            </button>
+                          ) : (
+                            <a
+                              href={info.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-foreground hover:text-primary transition-colors font-medium"
+                            >
+                              {info.value}
+                            </a>
+                          )
                         ) : (
                           <p className="text-foreground font-medium">{info.value}</p>
                         )}
