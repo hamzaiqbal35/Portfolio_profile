@@ -15,7 +15,7 @@ const ProjectsSection = () => {
       description: "A comprehensive fitness platform designed to modernize gym operations. It connects Admins, Trainers, and Members through role-based dashboards to manage memberships, classes, and progress in a clean, responsive interface.",
       image: fitTrackProject,
       technologies: ["React.js", "Vite", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
-      githubUrl: "https://github.com/hamzaiqbal35/ApexcifyTechnologys_Fitness-Center-Management-System.git",
+      githubUrl: "https://github.com/hamzaiqbal35/FitTrack_Fitness-Center-Management-System.git",
       features: [
         "Role-Based Dashboards",
         "Membership Management",
@@ -30,7 +30,7 @@ const ProjectsSection = () => {
       description: "A modern, lightweight social platform built with the MERN stack. It lets users share posts, photos, and videos, follow each other, and engage through likes and comments in a clean, responsive interface.",
       image: echoSocialProject,
       technologies: ["MongoDB", "Express.js", "React", "Vite", "Node.js", "Tailwind CSS"],
-      githubUrl: "https://github.com/hamzaiqbal35/ApexcifyTechnologys_Social-Media-Platform.git",
+      githubUrl: "https://github.com/hamzaiqbal35/EchoSocial_Social-Media-Platform.git",
       features: ["User Authentication", "Post Creation & Sharing", "Like & Comment System", "Follow & Unfollow", "User Profiles", "Admin Dashboard"]
     },
     {
@@ -38,7 +38,7 @@ const ProjectsSection = () => {
       description: "A multi-vendor ecommerce platform that enables vendors to manage products and orders while customers shop seamlessly across a unified marketplace, powered by a modern React and Node.js architecture.",
       image: fluxmartProject,
       technologies: ["MongoDB", "Express.js", "React", "Vite", "Node.js", "Tailwind CSS"],
-      githubUrl: "https://github.com/hamzaiqbal35/ApexcifyTechnologys_Multi-Vendor-eCommerce-Platform.git",
+      githubUrl: "https://github.com/hamzaiqbal35/Fluxmart_Multi-Vendor-eCommerce-Platform.git",
       features: ["Multi-Vendor Marketplace", "User Authentication", "Product Management", "Shopping Cart", "Order Processing"]
     },
     {
@@ -46,7 +46,7 @@ const ProjectsSection = () => {
       description: "Full-stack PHP/MySQL system for Allied Steel Works featuring comprehensive admin & customer portals with advanced purchase management, sales tracking, detailed reporting, and real-time analytics dashboard.",
       image: dmsProject,
       technologies: ["PHP", "MySQL", "JavaScript", "Bootstrap", "Chart.js"],
-      githubUrl: "https://github.com/hamzaiqbal35/DMS.git",
+      githubUrl: "https://github.com/hamzaiqbal35/Distribution-Management-System_Ecommerce-Website.git",
       features: ["Admin Dashboard", "Customer Portal", "Sales Management", "Analytics", "Reporting"]
     },
     {
